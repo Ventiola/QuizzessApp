@@ -88,7 +88,7 @@ export default function Admin() {
             <div className="text-2xl font-bold">—</div>
           </div>
           <div className="bg-gray-800 p-4 rounded-lg shadow">
-            <div className="text-sm text-gray-400">Other metric</div>
+            <div className="text-sm text-gray-400">--</div>
             <div className="text-2xl font-bold">—</div>
           </div>
         </div>

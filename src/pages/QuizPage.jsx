@@ -17,7 +17,7 @@ export default function QuizPage() {
 
   useEffect(() => {
     if (!quizId) {
-      console.error("❌ ERROR: quizId from URL is undefined");
+      console.error("quizId from URL is undefined");
       return;
     }
 
@@ -25,7 +25,7 @@ export default function QuizPage() {
       setLoading(true);
       const data = await fetchQuiz(quizId);
 
-      console.log("HASIL FETCH QUIZ:", data);
+      console.log("Fetch Quiz:", data);
 
       setQuiz(data);
       setLoading(false);
@@ -42,14 +42,14 @@ export default function QuizPage() {
   if (loading)
     return (
       <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
-        Memuat quiz...
+        Loading Quiz
       </div>
     );
 
   if (!quiz)
     return (
       <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
-        Quiz tidak ditemukan
+        Quiz is not found.
       </div>
     );
 
@@ -59,9 +59,9 @@ export default function QuizPage() {
     return (
       <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center text-center">
         <div>
-          <h1 className="text-3xl font-bold mb-4">{quiz.title} Selesai 🎉</h1>
+          <h1 className="text-3xl font-bold mb-4">{quiz.title} Done</h1>
           <Link to="/home" className="text-blue-500 underline">
-            Kembali ke Home
+            Back to Home
           </Link>
         </div>
       </div>

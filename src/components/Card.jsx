@@ -12,9 +12,8 @@ export default function Card({ id, title, img }) {
         alt={title}
       />
 
-      <div className="p-4 flex flex-col justify-between flex-1">
+      <div className="p-4 flex flex-col justify-between flex-1 bg-slate-200">
         <h2 className="text-lg font-semibold mb-1 text-gray-700">{title}</h2>
-        <p className="text-gray-700 text-sm">Klik untuk mulai kuis</p>
       </div>
     </Link>
   );

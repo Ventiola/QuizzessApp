@@ -7,7 +7,7 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [userData, setUserData] = useState(null); // <-- simpan data dari Firestore
+  const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export function AuthProvider({ children }) {
         const snap = await getDoc(ref);
 
         if (snap.exists()) {
-          setUserData(snap.data()); // <- simpan name, email, dll
+          setUserData(snap.data()); 
         }
       } else {
         setUserData(null);

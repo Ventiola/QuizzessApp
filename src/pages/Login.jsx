@@ -29,7 +29,7 @@ export default function Login() {
           navigate("/home");
         }
       } else {
-        navigate("/home"); // fallback
+        navigate("/home"); 
       }
 
     } catch (err) {

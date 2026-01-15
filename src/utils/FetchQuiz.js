@@ -4,7 +4,6 @@ import { db } from "../firebase";
 export async function fetchQuiz(quizId) {
   console.log("FETCH QUIZ ID:", quizId);
 
-  // 1. Ambil dokumen quiz
   const quizRef = doc(db, "quizzes", quizId);
   const quizSnap = await getDoc(quizRef);
 
@@ -12,17 +11,14 @@ export async function fetchQuiz(quizId) {
 
   const quizData = { id: quizId, ...quizSnap.data() };
 
-  // 2. Ambil subcollection questions
   const qCol = collection(db, "quizzes", quizId, "questions");
   const qSnap = await getDocs(qCol);
 
   let questions = [];
 
-  // LOOP setiap question
   for (const qDoc of qSnap.docs) {
     const qData = qDoc.data();
 
-    // 3. Ambil subcollection options dari question ini
     const optCol = collection(
       db,
       "quizzes",
@@ -45,7 +41,6 @@ export async function fetchQuiz(quizId) {
       };
     });
 
-    // push QA lengkap
     questions.push({
       id: qDoc.id,
       "q-text": qData["q-text"],

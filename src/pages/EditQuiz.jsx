@@ -16,6 +16,7 @@ export default function EditQuiz() {
 
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const [image, setImage] = useState ("");
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -27,6 +28,7 @@ export default function EditQuiz() {
 
         const quizData = quizSnap.data();
         setTitle(quizData.title);
+        setImage(quizData.image);
         setDesc(quizData.description || "");
 
         const qSnap = await getDocs(
@@ -106,6 +108,7 @@ export default function EditQuiz() {
 
       await updateDoc(doc(db, "quizzes", quizId), {
         title: title,
+        image: image,
         description: desc,
       });
 
@@ -160,6 +163,16 @@ export default function EditQuiz() {
             className="w-full p-2 rounded bg-gray-700 outline-none"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-lg mb-1">Image</label>
+          <input
+            type="url"
+            className="w-full p-2 rounded bg-gray-700 outline-none"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
           />
         </div>
 

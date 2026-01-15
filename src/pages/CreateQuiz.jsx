@@ -53,17 +53,20 @@ export default function CreateQuiz() {
 
     setLoading(true);
 
+    console.log("IMAGE STATE:", image, typeof image);
+
+
     try {
       const quizRef = await addDoc(collection(db, "quizzes"), {
         title: title,
         description: desc,
+        image: image,
         createdAt: Date.now(),
       });
 
       for (let qIndex = 0; qIndex < questions.length; qIndex++) {
         const q = questions[qIndex];
 
-        // Buat dokumen untuk pertanyaan
         const questionRef = await addDoc(
           collection(db, "quizzes", quizRef.id, "questions"),
           {
@@ -71,7 +74,6 @@ export default function CreateQuiz() {
           }
         );
 
-        // 3. Simpan setiap opsi dalam subcollection "options"
         for (let optIndex = 0; optIndex < q.options.length; optIndex++) {
           const optionText = q.options[optIndex];
           const isCorrect = optIndex === q.correct;
@@ -129,7 +131,7 @@ export default function CreateQuiz() {
           <div>
             <label className="block text-lg mb-1">Image URL</label>
             <input
-              type="text"
+              type="url"
               className="w-full p-2 rounded bg-gray-700 outline-none"
               placeholder="https://contoh.com/gambar.jpg"
               value={image}

@@ -5,7 +5,7 @@ import { auth } from "../firebase";
 
 export default function Navbar() {
   const { user, userData } = useAuth();
-  const navigate = useNavigate(); // <-- WAJIB ADA
+  const navigate = useNavigate(); 
 
   const handleLogout = async () => {
     await signOut(auth);
@@ -17,7 +17,8 @@ export default function Navbar() {
       <div className="text-white px-6 py-3 shadow-md flex justify-between items-center mx-12">
         <h1 className="text-2xl font-bold">Quiz App</h1>
 
-        <ul className="flex space-x-6">
+        <ul className="flex space-x-6 items-center">
+          
           <li><Link to="/" className="hover:text-gray-200">Home</Link></li>
           <li><Link to="/about" className="hover:text-gray-200">About</Link></li>
           <li><Link to="/contact" className="hover:text-gray-200">Contact</Link></li>
